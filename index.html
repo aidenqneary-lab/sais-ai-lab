@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAIS AI Lab — Become an AI native today</title>
+<meta name="description" content="SAIS AI Lab is a student-led initiative at Stamford American International School, helping students and clubs use AI to research, create, analyze, and solve real problems.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Archivo:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+
+<!-- ===================== LOADER ===================== -->
+<div id="loader">
+  <div class="l-brand grad-text">SAIS AI Lab</div>
+  <div class="l-bar"><div class="l-fill"></div></div>
+  <div class="l-pct">0%</div>
+</div>
+
+<!-- ===================== BACKGROUND LAYERS ===================== -->
+<canvas id="starscape"></canvas>
+<div class="orb orb-a"></div>
+<div class="orb orb-b"></div>
+<div id="scroll-progress"></div>
+
+<!-- ===================== NAVBAR (identical on every page) ===================== -->
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <!-- CLUB LOGO PLACEHOLDER - replace this <div> with <img src="assets/img/club-logo.png" alt="SAIS AI Lab logo"> -->
+      <div class="logo-slot" title="Club logo placeholder">CLUB<br>LOGO</div>
+      <!-- SCHOOL LOGO PLACEHOLDER - replace this <div> with <img src="assets/img/school-logo.png" alt="Stamford American International School logo"> -->
+      <div class="logo-slot school" title="School logo placeholder">SCH<br>LOGO</div>
+      <span class="brand-text">
+        <span class="brand-name">SAIS AI Lab</span>
+        <span class="brand-sub">Stamford American</span>
+      </span>
+    </a>
+
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#offer">What We Offer</a>
+      <a href="index.html#responsible">Responsible AI</a>
+      <a href="team.html">Team</a>
+      <a href="register.html" class="nav-cta">Register</a>
+    </nav>
+  </div>
+</header>
+
+<main class="page">
+
+  <!-- ===================== HERO: SCROLL-DRIVEN ANIMATION =====================
+       The stage below is intentionally transparent — the page background shows
+       straight through it, and both canvases are feathered at their edges, so
+       the animation dissolves into the page with no box, border or hard edge.
+  -->
+  <section class="hero-scroll" id="top">
+    <div class="hero-stage">
+      <canvas id="frameCanvas"></canvas>
+      <canvas id="netCanvas"></canvas>
+
+      <!-- Opening scene: slogan in front of the floating monitor -->
+      <div class="hero-slogan">
+        <h1 class="grad-text">Become an AI native today</h1>
+        <div class="sub">SAIS AI Lab</div>
+      </div>
+
+      <!-- Revealed once the camera is inside the screen -->
+      <div class="hero-typed">
+        <div class="typed-line"></div>
+        <div class="typed-line"></div>
+        <div class="typed-line"></div>
+      </div>
+
+      <div class="scroll-hint">
+        <span class="mouse"></span>
+        <span>Scroll</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== MISSION ===================== -->
+  <section class="section" id="mission">
+    <div class="wrap">
+      <p class="eyebrow reveal">Our Mission</p>
+      <h2 class="section-title reveal" data-delay="60">
+        Not another club. <span class="grad-text">A shared resource.</span>
+      </h2>
+
+      <!-- The tagline types itself out when it scrolls into view -->
+      <p class="lead reveal" data-delay="120" style="font-family:var(--font-display);font-size:clamp(1.15rem,2.4vw,1.65rem);color:var(--text);line-height:1.45;letter-spacing:-0.02em;max-width:26ch;">
+        <span data-typewriter="Students helping students and clubs use AI to research, create, analyze, and solve real problems."></span>
+      </p>
+
+      <p class="lead reveal" data-delay="180" style="margin-top:30px;">
+        SAIS AI Lab is a student-led initiative at Stamford American International School.
+        Rather than being just another club, it works alongside existing clubs and students
+        to help them use AI tools effectively, responsibly, and creatively — whatever they
+        are already working on.
+      </p>
+
+      <div class="stat-row">
+        <div class="stat reveal"><div class="num"><span data-count="5">0</span></div><div class="lbl">Ways we help</div></div>
+        <div class="stat reveal" data-delay="80"><div class="num"><span data-count="3">0</span></div><div class="lbl">Learning tracks</div></div>
+        <div class="stat reveal" data-delay="160"><div class="num"><span data-count="0">0</span></div><div class="lbl">Assignments we do for you</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== WHAT WE OFFER ===================== -->
+  <section class="section" id="offer">
+    <div class="wrap">
+      <p class="eyebrow reveal">What We Offer</p>
+      <h2 class="section-title reveal" data-delay="60">Five ways we work <span class="grad-text">alongside you</span></h2>
+      <p class="lead reveal" data-delay="120">
+        Bring us a problem from your club, your project, or your own curiosity — we will help
+        you find the right tool and the right approach.
+      </p>
+
+      <div class="card-grid">
+        <article class="card reveal">
+          <div class="card-num">01</div>
+          <h3>AI Consults</h3>
+          <p>Sit down with a student consultant and work out which AI tools actually fit the problem you are trying to solve.</p>
+        </article>
+
+        <article class="card reveal" data-delay="70">
+          <div class="card-num">02</div>
+          <h3>AI Workshops</h3>
+          <p>Hands-on sessions where students learn practical AI skills together, from prompting fundamentals to building real things.</p>
+        </article>
+
+        <article class="card reveal" data-delay="140">
+          <div class="card-num">03</div>
+          <h3>AI Tool Guides</h3>
+          <p>Clear, school-appropriate guides to the tools worth knowing — what each one is good at, and where it falls short.</p>
+        </article>
+
+        <article class="card reveal" data-delay="210">
+          <div class="card-num">04</div>
+          <h3>AI Projects</h3>
+          <p>We partner with clubs and students to build AI-powered projects that solve genuine problems around the school.</p>
+        </article>
+
+        <article class="card reveal" data-delay="280">
+          <div class="card-num">05</div>
+          <h3>Responsible AI</h3>
+          <p>Guidance on using AI honestly and safely, so your work stays your own and school policy is always respected.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== RESPONSIBLE AI PLEDGE ===================== -->
+  <section class="section" id="responsible">
+    <div class="wrap">
+      <p class="eyebrow reveal">Responsible AI Pledge</p>
+      <h2 class="section-title reveal" data-delay="60">The line we <span class="grad-text">will not cross</span></h2>
+
+      <div class="pledge-quote reveal" data-delay="120" style="margin-top:44px;">
+        <p>“We teach students how to use AI.<br>We do not use AI to do students' work for them.”</p>
+        <div class="attrib">Our guiding principle</div>
+      </div>
+
+      <p class="lead reveal" data-delay="60" style="margin-top:54px;">
+        To keep that promise concrete, here is what the Lab will <strong style="color:var(--text)">not</strong> do:
+      </p>
+
+      <ul class="nope-list">
+        <li class="reveal"><span class="x">✕</span><span>Complete assignments, essays, or homework for students.</span></li>
+        <li class="reveal" data-delay="60"><span class="x">✕</span><span>Help anyone pass AI-generated work off as their own.</span></li>
+        <li class="reveal" data-delay="120"><span class="x">✕</span><span>Upload confidential or personal information to public AI tools.</span></li>
+        <li class="reveal" data-delay="180"><span class="x">✕</span><span>Bypass or work around school policy on AI use.</span></li>
+        <li class="reveal" data-delay="240"><span class="x">✕</span><span>Trust AI output without checking it against real sources.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===================== CTA ===================== -->
+  <section class="section" id="join">
+    <div class="wrap">
+      <div class="cta-band reveal">
+        <h2>Ready to become <span class="grad-text">AI native?</span></h2>
+        <p>Join the Lab, bring your club's toughest problem, or just come and learn. Everyone at Stamford American is welcome.</p>
+        <a class="btn btn-primary" href="register.html">Register your interest →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===================== FOOTER (identical on every page) ===================== -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logos">
+          <!-- CLUB LOGO PLACEHOLDER - replace this <div> with <img src="assets/img/club-logo.png" alt="SAIS AI Lab logo"> -->
+          <div class="logo-slot" title="Club logo placeholder">CLUB<br>LOGO</div>
+          <!-- SCHOOL LOGO PLACEHOLDER - replace this <div> with <img src="assets/img/school-logo.png" alt="Stamford American International School logo"> -->
+          <div class="logo-slot school" title="School logo placeholder">SCH<br>LOGO</div>
+        </div>
+        <p>A student-led initiative at Stamford American International School, helping students and clubs use AI to research, create, analyze, and solve real problems.</p>
+      </div>
+
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <a href="index.html">Home</a>
+          <a href="index.html#offer">What We Offer</a>
+          <a href="index.html#responsible">Responsible AI</a>
+        </div>
+        <div class="footer-col">
+          <h4>Get Involved</h4>
+          <a href="team.html">Executive Team</a>
+          <a href="register.html">Register</a>
+          <a href="index.html#mission">Our Mission</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 SAIS AI Lab · Stamford American International School</span>
+      <span class="principle">We teach students how to use AI — we don't use AI to do their work.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/site.js"></script>
+<script src="assets/js/hero.js"></script>
+</body>
+</html>

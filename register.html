@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Register — SAIS AI Lab</title>
+<meta name="description" content="Register to join SAIS AI Lab, the student-led AI initiative at Stamford American International School.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Archivo:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+
+<!-- ===================== BACKGROUND LAYERS ===================== -->
+<canvas id="starscape"></canvas>
+<div class="orb orb-a"></div>
+<div class="orb orb-b"></div>
+<div id="scroll-progress"></div>
+
+<!-- ===================== NAVBAR (identical on every page) ===================== -->
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <!-- CLUB LOGO PLACEHOLDER - replace this <div> with <img src="assets/img/club-logo.png" alt="SAIS AI Lab logo"> -->
+      <div class="logo-slot" title="Club logo placeholder">CLUB<br>LOGO</div>
+      <!-- SCHOOL LOGO PLACEHOLDER - replace this <div> with <img src="assets/img/school-logo.png" alt="Stamford American International School logo"> -->
+      <div class="logo-slot school" title="School logo placeholder">SCH<br>LOGO</div>
+      <span class="brand-text">
+        <span class="brand-name">SAIS AI Lab</span>
+        <span class="brand-sub">Stamford American</span>
+      </span>
+    </a>
+
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#offer">What We Offer</a>
+      <a href="index.html#responsible">Responsible AI</a>
+      <a href="team.html">Team</a>
+      <a href="register.html" class="nav-cta">Register</a>
+    </nav>
+  </div>
+</header>
+
+<main class="page">
+
+  <section class="page-head">
+    <div class="wrap">
+      <p class="eyebrow reveal">Join the Lab</p>
+      <h1 class="reveal" data-delay="60">Register your <span class="grad-text">interest</span></h1>
+      <p class="lead reveal" data-delay="120">
+        Open to every student at Stamford American — whether you have built models before
+        or have never opened an AI tool in your life.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:10px;">
+    <div class="wrap">
+      <div class="form-card reveal">
+
+        <!-- ---------- The form ---------- -->
+        <form id="register-form" novalidate>
+          <div class="field">
+            <label for="fullname">Full Name <span class="req">*</span></label>
+            <input type="text" id="fullname" name="fullname" placeholder="e.g. Alex Tan" autocomplete="name">
+            <div class="err">Please enter your full name.</div>
+          </div>
+
+          <div class="field">
+            <label for="grade">Grade / Year <span class="req">*</span></label>
+            <select id="grade" name="grade">
+              <option value="">Select your grade or year…</option>
+              <option>Grade 6</option>
+              <option>Grade 7</option>
+              <option>Grade 8</option>
+              <option>Grade 9</option>
+              <option>Grade 10</option>
+              <option>Grade 11</option>
+              <option>Grade 12</option>
+              <option>Faculty / Staff</option>
+              <option>Other</option>
+            </select>
+            <div class="err">Please choose your grade or year.</div>
+          </div>
+
+          <div class="field">
+            <label for="email">Email <span class="req">*</span></label>
+            <input type="email" id="email" name="email" placeholder="you@stamford.edu.sg" autocomplete="email">
+            <div class="err">Please enter a valid email address.</div>
+          </div>
+
+          <div class="field">
+            <label for="why">Why do you want to join SAIS AI Lab? <span class="req">*</span></label>
+            <textarea id="why" name="why" rows="5" placeholder="Tell us what you're curious about, a problem you'd like to solve, or a club you'd like us to work with…"></textarea>
+            <div class="err">Please tell us a little about why you'd like to join (at least 10 characters).</div>
+          </div>
+
+          <div class="field">
+            <label for="experience">Any AI experience? <span class="opt">(optional)</span></label>
+            <textarea id="experience" name="experience" rows="3" placeholder="Totally fine to leave this blank — beginners are very welcome."></textarea>
+          </div>
+
+          <p class="form-note">
+            Fields marked <span style="color:var(--cyan)">*</span> are required. This form is a
+            demonstration — nothing is sent anywhere yet.
+          </p>
+
+          <button type="submit" class="btn btn-primary">Submit registration →</button>
+        </form>
+
+        <!-- ---------- Confirmation shown after a valid submit ---------- -->
+        <div class="form-success" id="form-success">
+          <div class="tick">✓</div>
+          <h2>Thanks for registering — <span class="grad-text">we'll be in touch!</span></h2>
+          <p id="success-detail">We've got your details and someone from the Lab will reach out soon.</p>
+          <button type="button" class="btn btn-ghost" id="reset-form">Register someone else</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===================== FOOTER (identical on every page) ===================== -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logos">
+          <!-- CLUB LOGO PLACEHOLDER - replace this <div> with <img src="assets/img/club-logo.png" alt="SAIS AI Lab logo"> -->
+          <div class="logo-slot" title="Club logo placeholder">CLUB<br>LOGO</div>
+          <!-- SCHOOL LOGO PLACEHOLDER - replace this <div> with <img src="assets/img/school-logo.png" alt="Stamford American International School logo"> -->
+          <div class="logo-slot school" title="School logo placeholder">SCH<br>LOGO</div>
+        </div>
+        <p>A student-led initiative at Stamford American International School, helping students and clubs use AI to research, create, analyze, and solve real problems.</p>
+      </div>
+
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <a href="index.html">Home</a>
+          <a href="index.html#offer">What We Offer</a>
+          <a href="index.html#responsible">Responsible AI</a>
+        </div>
+        <div class="footer-col">
+          <h4>Get Involved</h4>
+          <a href="team.html">Executive Team</a>
+          <a href="register.html">Register</a>
+          <a href="index.html#mission">Our Mission</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 SAIS AI Lab · Stamford American International School</span>
+      <span class="principle">We teach students how to use AI — we don't use AI to do their work.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/site.js"></script>
+<script src="assets/js/register.js"></script>
+</body>
+</html>
