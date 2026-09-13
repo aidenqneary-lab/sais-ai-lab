@@ -6,7 +6,7 @@
                        position, feathered at the edges by CSS mask
      2. #netCanvas   — a live, mouse-reactive neural constellation that
                        cross-fades in as the video's zoom completes
-     3. text layers  — the opening slogan, then the typewriter sentences
+     3. text layers  — the opening slogan, then the typed mission statement
 
    Because the stage has no background of its own, the page background
    shows through everywhere — so the animation has no visible box or edge.
@@ -280,61 +280,52 @@
 
   /* ---------------------------------------------------------
      Typewriter sequence
-     One sentence at a time: type it, hold it, erase it, then type
-     the next — looping for as long as the network is on screen.
+     Types the mission block by block — heading, tagline, then the
+     paragraph — and leaves it on screen once written. The copy lives
+     in each element's data-text attribute in index.html.
+
+     Every block holds an invisible full copy of its text, so it takes
+     its final size up front and the layout doesn't jump as lines wrap.
      --------------------------------------------------------- */
-  var LINES = [
-    'Learn how to use A.I. to innovate and create',
-    'Learn how to build practical A.I. skills',
-    'Learn to use A.I. responsibly'
-  ];
-  var TYPE_SPEED  = 34;
-  var ERASE_SPEED = 16;
-  var HOLD_MS     = 1900;   // how long a finished sentence stays up
-  var GAP_MS      = 380;    // empty beat before the next sentence
+  var TYPE_SPEEDS  = [70, 34, 11];   // ms per character: heading, tagline, paragraph
+  var BLOCK_GAP_MS = 420;
 
   var typedStarted = false;
-  var typedTimer = null;        // only one step is ever pending at a time
+  var typedTimer = null;
   var typedRun = 0;             // bumped on reset so stale steps bail out
   var cancelActiveType = null;
+  var typedBlocks = [];
 
-  function later(fn, ms) { typedTimer = setTimeout(fn, ms); }
-
-  function erase(el, run, done) {
-    var caret = el.querySelector('.caret');
-    var text = el.textContent;
-    (function tick() {
-      if (run !== typedRun) return;
-      if (!text.length) { done(); return; }
-      text = text.slice(0, -1);
-      el.textContent = text;
-      if (caret) el.appendChild(caret);
-      later(tick, ERASE_SPEED);
-    })();
+  if (typedWrap) {
+    typedWrap.querySelectorAll('.typed-line').forEach(function (el) {
+      var text = el.getAttribute('data-text') || '';
+      var ghost = document.createElement('span');
+      ghost.className = 'typed-ghost';
+      ghost.setAttribute('aria-hidden', 'true');
+      ghost.textContent = text;
+      var out = document.createElement('span');
+      out.className = 'typed-text';
+      el.textContent = '';
+      el.appendChild(ghost);
+      el.appendChild(out);
+      typedBlocks.push({ out: out, text: text });
+    });
   }
 
   function runTypewriter() {
-    if (!typedWrap) return;
-    var el = typedWrap.querySelector('.typed-line');
-    if (!el) return;
+    if (!typedWrap || !typedBlocks.length) return;
     var run = typedRun;
     var idx = 0;
-    el.textContent = '';
     typedWrap.classList.add('on');
 
     function next() {
-      if (run !== typedRun) return;
-      var text = LINES[idx];
-      idx = (idx + 1) % LINES.length;
-      cancelActiveType = window.AILab.typewrite(el, text, TYPE_SPEED, function () {
+      if (run !== typedRun || idx >= typedBlocks.length) return;
+      var block = typedBlocks[idx];
+      var speed = TYPE_SPEEDS[Math.min(idx, TYPE_SPEEDS.length - 1)];
+      idx++;
+      cancelActiveType = window.AILab.typewrite(block.out, block.text, speed, function () {
         cancelActiveType = null;
-        // Keep the caret blinking while the sentence holds
-        var caret = el.querySelector('.caret');
-        if (caret) caret.classList.remove('done');
-        later(function () {
-          if (reduceMotion) { el.textContent = ''; later(next, GAP_MS); return; }
-          erase(el, run, function () { later(next, GAP_MS); });
-        }, HOLD_MS);
+        typedTimer = setTimeout(next, BLOCK_GAP_MS);
       });
     }
     next();
@@ -346,10 +337,8 @@
     typedTimer = null;
     if (cancelActiveType) { cancelActiveType(); cancelActiveType = null; }
     typedStarted = false;
-    if (typedWrap) {
-      typedWrap.classList.remove('on');
-      typedWrap.querySelectorAll('.typed-line').forEach(function (el) { el.textContent = ''; });
-    }
+    if (typedWrap) typedWrap.classList.remove('on');
+    typedBlocks.forEach(function (b) { b.out.textContent = ''; });
   }
 
   /* ---------------------------------------------------------

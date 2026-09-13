@@ -32,9 +32,6 @@
   <div class="nav-inner">
     <a class="brand" href="index.html">
       <img class="brand-logo" src="assets/img/ai-lab-logo.png" alt="AI Lab logo">
-      <span class="brand-text">
-        <span class="brand-name">AI Lab</span>
-      </span>
     </a>
 
     <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
@@ -58,6 +55,8 @@
        the animation dissolves into the page with no box, border or hard edge.
   -->
   <section class="hero-scroll" id="top">
+    <!-- Scroll target for "Our Mission" links: sits where the mission types out -->
+    <div id="mission" class="hero-anchor" aria-hidden="true"></div>
     <div class="hero-stage">
       <canvas id="frameCanvas"></canvas>
       <canvas id="netCanvas"></canvas>
@@ -68,9 +67,12 @@
         <div class="sub">AI Lab</div>
       </div>
 
-      <!-- Revealed once the camera is inside the screen -->
+      <!-- Revealed once the camera is inside the screen.
+           Each block types out in order; the copy is in data-text. -->
       <div class="hero-typed">
-        <div class="typed-line"></div>
+        <h2 class="typed-line mission-title" data-text="OUR MISSION"></h2>
+        <p class="typed-line mission-tagline" data-text="Learn AI. Solve real problems. Create impact."></p>
+        <p class="typed-line mission-body" data-text="AI Lab builds practical AI skills through student-led service projects. We work with clubs, organisations, and the community to identify real needs, decide where AI can help, take action, and measure the impact."></p>
       </div>
 
       <div class="scroll-hint">
@@ -80,43 +82,13 @@
     </div>
   </section>
 
-  <!-- ===================== MISSION ===================== -->
-  <section class="section" id="mission">
-    <div class="wrap">
-      <p class="eyebrow reveal">Our Mission</p>
-      <h2 class="section-title reveal" data-delay="60">
-        Real problems. <span class="grad-text">Real impact.</span>
-      </h2>
-
-      <!-- The tagline types itself out when it scrolls into view -->
-      <p class="lead reveal" data-delay="120" style="font-family:var(--font-display);font-size:clamp(1.15rem,2.4vw,1.65rem);color:var(--text);line-height:1.45;letter-spacing:-0.02em;max-width:26ch;">
-        <span data-typewriter="To solve real-world problems within our school and the wider community using AI responsibly and ethically as a tool to create positive impact."></span>
-      </p>
-
-      <p class="lead reveal" data-delay="180" style="margin-top:30px;">
-        AI Lab runs student-led service projects that use AI tools to help the school and
-        local organizations solve everyday challenges, while building members' digital
-        leadership skills along the way. Rather than simply learning about AI, members work
-        with clubs, teachers and departments across the school to find a real need,
-        decide whether AI is the right tool, take action, and measure the impact.
-      </p>
-
-      <div class="stat-row">
-        <div class="stat reveal"><div class="num"><span data-count="5">0</span></div><div class="lbl">Ways we help</div></div>
-        <div class="stat reveal" data-delay="80"><div class="num"><span data-count="3">0</span></div><div class="lbl">Learning tracks</div></div>
-        <div class="stat reveal" data-delay="160"><div class="num"><span data-count="0">0</span></div><div class="lbl">Assignments we do for you</div></div>
-      </div>
-    </div>
-  </section>
-
   <!-- ===================== WHAT WE DO ===================== -->
   <section class="section" id="what-we-do">
     <div class="wrap">
       <p class="eyebrow reveal">What We Do</p>
-      <h2 class="section-title reveal" data-delay="60">Five ways we work <span class="grad-text">alongside you</span></h2>
+      <h2 class="section-title reveal" data-delay="60">Learn. Build. <span class="grad-text">Solve.</span></h2>
       <p class="lead reveal" data-delay="120">
-        Bring us a problem from your club, your project, or your own curiosity — we will help
-        you find the right tool and the right approach.
+        Build your AI skills, bring us a problem, or work with us on a project.
       </p>
 
       <div class="card-grid">

@@ -24,7 +24,7 @@ solve everyday challenges, while building members' digital leadership skills alo
 
 | Page | Description |
 | --- | --- |
-| `index.html` | Scroll-driven hero animation, Mission, What We Do, Responsible AI Pledge |
+| `index.html` | Scroll-driven hero animation (ends by typing out the mission), What We Do, Responsible AI Pledge |
 | `lab.html` | The living record — upcoming sessions, projects, events, opportunities, past work |
 | `team.html` | Executive team grid |
 | `register.html` | Registration form with validation and on-page confirmation |

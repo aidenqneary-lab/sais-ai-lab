@@ -211,23 +211,6 @@ h1, h2, h3, h4 {
 .brand-logo { height: 42px; width: auto; display: block; flex-shrink: 0; }
 .footer-logo { height: 84px; width: auto; display: block; }
 
-.brand-text { display: flex; flex-direction: column; line-height: 1.1; }
-.brand-name {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.02rem;
-  letter-spacing: -0.02em;
-  white-space: nowrap;
-}
-.brand-sub {
-  font-family: var(--font-mono);
-  font-size: 9.5px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-  white-space: nowrap;
-}
-
 .nav-links { display: flex; align-items: center; gap: 4px; }
 .nav-links a {
   padding: 9px 15px;
@@ -319,6 +302,17 @@ h1, h2, h3, h4 {
   height: 520vh;          /* scroll distance that drives the frame sequence */
   z-index: 2;
 }
+/* Invisible target for #mission links: 78% of the hero's scroll distance,
+   just after the typewriter starts. The +90px cancels the offset that anchor
+   scrolling subtracts for the navbar. */
+.hero-anchor {
+  position: absolute;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  top: calc(0.78 * (100% - 100vh) + 90px);
+  pointer-events: none;
+}
 .hero-stage {
   position: sticky;
   top: 0;
@@ -408,15 +402,40 @@ h1, h2, h3, h4 {
 .hero-typed.on { opacity: 1; }
 
 .typed-line {
+  display: grid;             /* the invisible full copy and the typed text share one cell */
+  width: 100%;
+  margin: 0;
+  /* A soft dark halo keeps the text readable over the bright nodes */
+  text-shadow: 0 2px 30px rgba(5, 8, 14, 0.98), 0 0 70px rgba(5, 8, 14, 0.95);
+}
+.typed-line > span { grid-area: 1 / 1; }
+.typed-ghost { visibility: hidden; }
+
+.mission-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.4rem, 7vw, 5.4rem);
+  letter-spacing: 0.06em;
+  line-height: 1;
+  color: var(--cyan);
+  text-shadow: 0 0 44px rgba(62, 231, 255, 0.35), 0 2px 30px rgba(5, 8, 14, 0.98);
+}
+.mission-tagline {
   font-family: var(--font-display);
   font-weight: 700;
   font-size: clamp(1.15rem, 3.1vw, 2.35rem);
   letter-spacing: -0.02em;
-  min-height: 1.25em;
-  /* A soft dark halo keeps the text readable over the bright nodes */
-  text-shadow: 0 2px 30px rgba(5, 8, 14, 0.98), 0 0 70px rgba(5, 8, 14, 0.95);
+  line-height: 1.25;
+  color: #ffffff;
 }
-.typed-line { color: #ffffff; }
+.mission-body {
+  max-width: 46rem;
+  margin-top: 4px;
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.55vw, 1.25rem);
+  line-height: 1.65;
+  color: #d3e0f2;
+}
 
 /* Blinking caret shared by every typewriter on the site */
 .caret {
@@ -933,7 +952,6 @@ h1, h2, h3, h4 {
   .nav-links a { padding: 14px 16px; font-size: 16px; border-radius: 12px; }
   .nav-cta { text-align: center; justify-content: center; margin-top: 10px; }
   .nav.scrolled .nav-inner { max-width: none; margin: 0 12px; }
-  .brand-sub { display: none; }
 }
 
 @media (max-width: 760px) {
@@ -952,7 +970,9 @@ h1, h2, h3, h4 {
   .card-grid, .nope-list, .team-grid { grid-template-columns: 1fr; }
   .hero-slogan h1 { font-size: clamp(1.75rem, 7.6vw, 2.3rem); }
   .hero-slogan .sub { letter-spacing: 0.3em; }
-  .typed-line { font-size: clamp(1.02rem, 5.2vw, 1.4rem); }
+  .mission-title { font-size: clamp(2rem, 11vw, 2.6rem); }
+  .mission-tagline { font-size: clamp(1.02rem, 5.2vw, 1.4rem); }
+  .mission-body { font-size: 0.95rem; line-height: 1.55; }
   .scroll-hint { bottom: 20px; }
   .footer-cols { gap: 30px; width: 100%; justify-content: space-between; }
 }
