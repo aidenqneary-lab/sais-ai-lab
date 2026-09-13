@@ -1,5 +1,5 @@
 /* ============================================================
-   SAIS AI Lab — shared design system
+   AI Club — shared design system
    One stylesheet powers every page: index.html, register.html, team.html
    ============================================================ */
 
@@ -389,7 +389,10 @@ h1, h2, h3, h4 {
   will-change: opacity, transform;
 }
 .hero-slogan h1 {
-  font-size: clamp(2.3rem, 6.6vw, 5.2rem);
+  /* Sized so the two-sentence tagline keeps clear margins rather than
+     running edge to edge on a wide screen. */
+  font-size: clamp(1.95rem, 5.4vw, 4.2rem);
+  max-width: 17ch;
   margin: 0;
   text-shadow: 0 6px 50px rgba(0, 0, 0, 0.85);
 }
@@ -966,7 +969,7 @@ h1, h2, h3, h4 {
 @media (max-width: 480px) {
   .hero-scroll { height: 350vh; }
   .card-grid, .nope-list, .team-grid { grid-template-columns: 1fr; }
-  .hero-slogan h1 { font-size: clamp(2rem, 9vw, 2.6rem); }
+  .hero-slogan h1 { font-size: clamp(1.75rem, 7.6vw, 2.3rem); }
   .hero-slogan .sub { letter-spacing: 0.3em; }
   .typed-line { font-size: clamp(1.02rem, 5.2vw, 1.4rem); }
   .scroll-hint { bottom: 20px; }
@@ -979,4 +982,123 @@ h1, h2, h3, h4 {
   .caret { animation: none; }
   .scroll-hint .mouse::after { animation: none; }
   * { scroll-behavior: auto !important; }
+}
+
+/* ============================================================
+   Lab page — the living record of what the club is actually doing
+   ============================================================ */
+.lab-block { margin-top: clamp(54px, 7vw, 88px); }
+.lab-block:first-of-type { margin-top: 0; }
+
+.lab-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+  padding-bottom: 15px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+}
+.lab-head h2 { font-size: clamp(1.45rem, 3vw, 2rem); }
+.lab-head .hint {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+/* A single entry row: date chip + copy */
+.entry {
+  display: flex;
+  gap: 20px;
+  padding: 22px;
+  border-radius: 16px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  transition: transform 0.3s cubic-bezier(0.2,0.7,0.3,1), border-color 0.3s, background 0.3s, box-shadow 0.3s;
+}
+.entry + .entry { margin-top: 13px; }
+.entry:hover {
+  transform: translateY(-3px);
+  background: var(--bg-panel-hi);
+  border-color: var(--border-hi);
+  box-shadow: 0 16px 44px rgba(0,0,0,0.42);
+}
+
+.date-chip {
+  flex-shrink: 0;
+  width: 66px;
+  padding: 11px 6px;
+  border-radius: 13px;
+  text-align: center;
+  background: rgba(62, 231, 255, 0.07);
+  border: 1px solid var(--border);
+}
+.date-chip .d {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.3rem;
+  line-height: 1;
+}
+.date-chip .m {
+  margin-top: 5px;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cyan);
+}
+
+.entry-body { min-width: 0; }
+.entry-body h3 { font-size: 1.1rem; margin-bottom: 7px; }
+.entry-body p { margin: 0; color: var(--text-muted); font-size: 14.8px; line-height: 1.6; }
+
+.entry-meta { margin-top: 12px; display: flex; gap: 8px; flex-wrap: wrap; }
+.tag {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 4px 11px;
+  border-radius: 99px;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+}
+.tag.live  { color: var(--cyan);   border-color: var(--border-hi); }
+.tag.done  { color: var(--violet); border-color: rgba(157,123,255,0.4); }
+
+/* The next thing happening gets a highlighted treatment */
+.featured {
+  padding: clamp(26px, 4vw, 40px);
+  border-radius: 24px;
+  background: linear-gradient(140deg, rgba(62,231,255,0.09), rgba(157,123,255,0.08));
+  border: 1px solid var(--border-hi);
+  box-shadow: var(--glow-cyan);
+}
+.featured .when {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 14px;
+}
+.featured h3 { font-size: clamp(1.4rem, 3vw, 2rem); margin-bottom: 14px; }
+.featured p { margin: 0; color: var(--text-muted); max-width: 60ch; }
+
+/* Shown where there is nothing to list yet */
+.lab-empty {
+  padding: 28px 24px;
+  border-radius: 16px;
+  border: 1px dashed var(--border);
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 14.5px;
+}
+
+@media (max-width: 560px) {
+  .entry { flex-direction: column; gap: 14px; }
+  .date-chip { width: fit-content; min-width: 66px; }
 }

@@ -1,12 +1,20 @@
-# SAIS AI Lab
+# AI Club
 
-Website for **SAIS AI Lab** — a student-led initiative at Stamford American International School
-that works alongside existing clubs and students to help them use AI tools effectively,
-responsibly, and creatively.
+Website for **AI Club** — a student-led club at Stamford American International School.
 
-> Students helping students and clubs use AI to research, create, analyze, and solve real problems.
+> **Become an AI Native. With Purpose.**
 
 **Live site:** https://aidenqneary-lab.github.io/sais-ai-lab
+
+## Mission
+
+To solve real-world problems within SAIS and the wider community using AI responsibly and
+ethically as a tool to create positive impact.
+
+## Purpose
+
+To run student-led service projects that use AI tools to help the school and local organizations
+solve everyday challenges, while building members' digital leadership skills along the way.
 
 ## Guiding principle
 
@@ -16,9 +24,12 @@ responsibly, and creatively.
 
 | Page | Description |
 | --- | --- |
-| `index.html` | Scroll-driven hero animation, Mission, What We Offer, Responsible AI Pledge |
-| `register.html` | Registration form with validation and on-page confirmation |
+| `index.html` | Scroll-driven hero animation, Mission, What We Do, Responsible AI Pledge |
+| `lab.html` | The living record — upcoming sessions, projects, events, opportunities, past work |
 | `team.html` | Executive team grid |
+| `register.html` | Registration form with validation and on-page confirmation |
+
+Navigation on every page: **Home · What We Do · Lab · Responsible AI · Team · Register**
 
 ## Running it locally
 
@@ -32,6 +43,17 @@ python3 -m http.server 8000
 
 Then visit http://localhost:8000
 
+## Keeping the Lab page up to date
+
+`lab.html` is the page that should change most often. It has five sections — Upcoming, Projects,
+Events, Opportunities and Past — and the file contains a comment block explaining the pattern:
+
+- Copy an `<article class="entry">` block to add an entry
+- Delete a section's entries and leave the `<div class="lab-empty">` message when there is
+  nothing to show
+- Status pills: `<span class="tag live">` (happening now), `<span class="tag done">` (finished),
+  or plain `<span class="tag">` for a neutral label
+
 ## Replacing the placeholders
 
 Every placeholder is marked with a comment saying exactly what to swap in. Find them all with:
@@ -40,8 +62,9 @@ Every placeholder is marked with a comment saying exactly what to swap in. Find 
 grep -rn "PLACEHOLDER" *.html
 ```
 
-- **Club and school logos** — navbar and footer of all three pages
+- **Club and school logos** — navbar and footer of all four pages
 - **Team names and photos** — `team.html`
+- **All Lab entries** — `lab.html`
 
 ## The hero animation
 

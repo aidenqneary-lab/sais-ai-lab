@@ -1,5 +1,5 @@
 /* ============================================================
-   SAIS AI Lab — shared site behaviour
+   AI Club — shared site behaviour
    Loaded by every page. Vanilla JS, no dependencies, works from file://
    ============================================================ */
 (function () {

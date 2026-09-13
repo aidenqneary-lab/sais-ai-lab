@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lab — AI Club</title>
+<meta name="description" content="What AI Club is working on right now — upcoming sessions, service projects, events, opportunities and completed work.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Archivo:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+
+<!-- ===================== BACKGROUND LAYERS ===================== -->
+<canvas id="starscape"></canvas>
+<div class="orb orb-a"></div>
+<div class="orb orb-b"></div>
+<div id="scroll-progress"></div>
+
+<!-- ===================== NAVBAR (identical on every page) ===================== -->
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <!-- CLUB LOGO PLACEHOLDER - replace this <div> with <img src="assets/img/club-logo.png" alt="AI Club logo"> -->
+      <div class="logo-slot" title="Club logo placeholder">CLUB<br>LOGO</div>
+      <!-- SCHOOL LOGO PLACEHOLDER - replace this <div> with <img src="assets/img/school-logo.png" alt="Stamford American International School logo"> -->
+      <div class="logo-slot school" title="School logo placeholder">SCH<br>LOGO</div>
+      <span class="brand-text">
+        <span class="brand-name">AI Club</span>
+        <span class="brand-sub">Stamford American</span>
+      </span>
+    </a>
+
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#what-we-do">What We Do</a>
+      <a href="lab.html">Lab</a>
+      <a href="index.html#responsible">Responsible AI</a>
+      <a href="team.html">Team</a>
+      <a href="register.html" class="nav-cta">Register</a>
+    </nav>
+  </div>
+</header>
+
+<main class="page">
+
+  <section class="page-head">
+    <div class="wrap">
+      <p class="eyebrow reveal">The Lab</p>
+      <h1 class="reveal" data-delay="60">Where the work <span class="grad-text">actually happens</span></h1>
+      <p class="lead reveal" data-delay="120">
+        The Lab is the public record of what AI Club is doing right now — the next session,
+        the service projects underway, challenges to enter, and what we have already shipped.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:16px;">
+    <div class="wrap">
+
+      <!-- ============================================================
+           HOW TO UPDATE THIS PAGE
+
+           Everything below is PLACEHOLDER content — replace it as real
+           things get scheduled. Each block follows the same pattern:
+
+             * To add an entry, copy one <article class="entry"> ... </article>
+               block and edit the date, title and description.
+             * To empty a section out, delete its entries and leave the
+               <div class="lab-empty"> message in their place.
+             * Status pills: <span class="tag live">  = happening now
+                             <span class="tag done">  = finished
+                             <span class="tag">       = neutral label
+           ============================================================ -->
+
+      <!-- ---------------- UPCOMING ---------------- -->
+      <div class="lab-block reveal">
+        <div class="lab-head">
+          <h2>Upcoming</h2>
+          <span class="hint">Next session</span>
+        </div>
+
+        <!-- FEATURED PLACEHOLDER - replace with the next real meeting or workshop -->
+        <div class="featured">
+          <div class="when">[ Day ] · [ Date ] · [ Time ] · [ Room ]</div>
+          <h3>[ Next session title placeholder ]</h3>
+          <p>
+            One or two sentences on what members will actually do in this session — the skill
+            being taught and the project it gets applied to. Replace this entirely.
+          </p>
+        </div>
+      </div>
+
+      <!-- ---------------- PROJECTS ---------------- -->
+      <div class="lab-block reveal">
+        <div class="lab-head">
+          <h2>Projects</h2>
+          <span class="hint">Service work underway</span>
+        </div>
+
+        <!-- ENTRY PLACEHOLDER - copy this block for each active project -->
+        <article class="entry">
+          <div class="date-chip"><div class="d">01</div><div class="m">Proj</div></div>
+          <div class="entry-body">
+            <h3>[ Project name placeholder ]</h3>
+            <p>
+              Which club or department asked for help, what problem they brought us, and how AI
+              is being used as a tool to help solve it.
+            </p>
+            <div class="entry-meta">
+              <span class="tag live">In progress</span>
+              <span class="tag">[ Partner club ]</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="entry">
+          <div class="date-chip"><div class="d">02</div><div class="m">Proj</div></div>
+          <div class="entry-body">
+            <h3>[ Project name placeholder ]</h3>
+            <p>
+              Another service project. Keep the description focused on the need and the outcome
+              rather than the tool.
+            </p>
+            <div class="entry-meta">
+              <span class="tag">Scoping</span>
+              <span class="tag">[ Partner club ]</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- ---------------- EVENTS ---------------- -->
+      <div class="lab-block reveal">
+        <div class="lab-head">
+          <h2>Events</h2>
+          <span class="hint">Challenges &amp; guests</span>
+        </div>
+
+        <!-- ENTRY PLACEHOLDER - competitions, AI challenges, guest speakers -->
+        <article class="entry">
+          <div class="date-chip"><div class="d">00</div><div class="m">Mon</div></div>
+          <div class="entry-body">
+            <h3>AI Club Challenge #1 — [ question placeholder ]</h3>
+            <p>
+              A short internal challenge members can enter. Describe the question, who can take
+              part, and how entries get judged.
+            </p>
+            <div class="entry-meta"><span class="tag">Challenge</span></div>
+          </div>
+        </article>
+
+        <article class="entry">
+          <div class="date-chip"><div class="d">00</div><div class="m">Mon</div></div>
+          <div class="entry-body">
+            <h3>[ Guest speaker placeholder ]</h3>
+            <p>Who is visiting, what they work on, and what members will get out of it.</p>
+            <div class="entry-meta"><span class="tag">Guest speaker</span></div>
+          </div>
+        </article>
+      </div>
+
+      <!-- ---------------- OPPORTUNITIES ---------------- -->
+      <div class="lab-block reveal">
+        <div class="lab-head">
+          <h2>Opportunities</h2>
+          <span class="hint">Outside the school</span>
+        </div>
+
+        <!-- ENTRY PLACEHOLDER - external competitions, courses, programmes -->
+        <article class="entry">
+          <div class="date-chip"><div class="d">00</div><div class="m">Due</div></div>
+          <div class="entry-body">
+            <h3>[ External programme or competition placeholder ]</h3>
+            <p>
+              An AI course, hackathon or competition worth knowing about, with the deadline and
+              who it suits. Link it up when you add the real one.
+            </p>
+            <div class="entry-meta"><span class="tag">External</span></div>
+          </div>
+        </article>
+      </div>
+
+      <!-- ---------------- PAST ---------------- -->
+      <div class="lab-block reveal">
+        <div class="lab-head">
+          <h2>Past</h2>
+          <span class="hint">Completed &amp; measured</span>
+        </div>
+
+        <!-- Nothing has finished yet — swap this for entries once it has -->
+        <div class="lab-empty">
+          Nothing here yet. Completed projects and their measured impact will be listed here.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================== CTA ===================== -->
+  <section class="section" style="padding-top:0;">
+    <div class="wrap">
+      <div class="cta-band reveal">
+        <h2>Got a problem <span class="grad-text">worth solving?</span></h2>
+        <p>If your club, class or department has a challenge you think AI could help with, bring it to us — that is exactly what the Lab is for.</p>
+        <a class="btn btn-primary" href="register.html">Get in touch →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===================== FOOTER (identical on every page) ===================== -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logos">
+          <!-- CLUB LOGO PLACEHOLDER - replace this <div> with <img src="assets/img/club-logo.png" alt="AI Club logo"> -->
+          <div class="logo-slot" title="Club logo placeholder">CLUB<br>LOGO</div>
+          <!-- SCHOOL LOGO PLACEHOLDER - replace this <div> with <img src="assets/img/school-logo.png" alt="Stamford American International School logo"> -->
+          <div class="logo-slot school" title="School logo placeholder">SCH<br>LOGO</div>
+        </div>
+        <p>A student-led club at Stamford American International School, solving real-world problems with AI used responsibly and ethically as a tool.</p>
+      </div>
+
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <a href="index.html">Home</a>
+          <a href="index.html#what-we-do">What We Do</a>
+          <a href="lab.html">Lab</a>
+          <a href="index.html#responsible">Responsible AI</a>
+        </div>
+        <div class="footer-col">
+          <h4>Get Involved</h4>
+          <a href="team.html">Executive Team</a>
+          <a href="register.html">Register</a>
+          <a href="index.html#mission">Our Mission</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 AI Club · Stamford American International School</span>
+      <span class="principle">We teach students how to use AI — we don't use AI to do their work.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/site.js"></script>
+</body>
+</html>

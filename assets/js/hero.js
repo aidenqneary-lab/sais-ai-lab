@@ -1,5 +1,5 @@
 /* ============================================================
-   SAIS AI Lab — hero scroll animation (home page only)
+   AI Club — hero scroll animation (home page only)
 
    Three layers share one sticky, fully transparent stage:
      1. #frameCanvas — the pre-extracted video frames, drawn by scroll
