@@ -1,5 +1,5 @@
 /* ============================================================
-   AI Club — shared site behaviour
+   AI Lab — shared site behaviour
    Loaded by every page. Vanilla JS, no dependencies, works from file://
    ============================================================ */
 (function () {
@@ -269,9 +269,9 @@
     // Returns a cancel handle so a caller can abort a run mid-type
     return function () { cancelled = true; };
   }
-  window.SAIS = window.SAIS || {};
-  window.SAIS.typewrite = typewrite;
-  window.SAIS.reduceMotion = reduceMotion;
+  window.AILab = window.AILab || {};
+  window.AILab.typewrite = typewrite;
+  window.AILab.reduceMotion = reduceMotion;
 
   /* ---------------------------------------------------------
      8. Standalone typewriter targets (e.g. the tagline)

@@ -1,5 +1,5 @@
 /* ============================================================
-   AI Club — registration form validation
+   AI Lab — registration form validation
    Client-side only: nothing is sent anywhere yet.
    ============================================================ */
 (function () {
@@ -70,8 +70,8 @@
     var name = document.getElementById('fullname').value.trim().split(/\s+/)[0];
     if (detail) {
       detail.textContent = name
-        ? 'Thanks, ' + name + '. We\'ve got your details and someone from the Club will reach out soon.'
-        : 'We\'ve got your details and someone from the Club will reach out soon.';
+        ? 'Thanks, ' + name + '. We\'ve got your details and someone from the Lab will reach out soon.'
+        : 'We\'ve got your details and someone from the Lab will reach out soon.';
     }
 
     form.style.display = 'none';

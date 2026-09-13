@@ -1,6 +1,6 @@
-# AI Club
+# AI Lab
 
-Website for **AI Club** — a student-led club at Stamford American International School.
+Website for **AI Lab** — a student-led school club.
 
 > **Become an AI Native. With Purpose.**
 
@@ -8,7 +8,7 @@ Website for **AI Club** — a student-led club at Stamford American Internationa
 
 ## Mission
 
-To solve real-world problems within SAIS and the wider community using AI responsibly and
+To solve real-world problems within our school and the wider community using AI responsibly and
 ethically as a tool to create positive impact.
 
 ## Purpose
@@ -62,7 +62,6 @@ Every placeholder is marked with a comment saying exactly what to swap in. Find 
 grep -rn "PLACEHOLDER" *.html
 ```
 
-- **Club and school logos** — navbar and footer of all four pages
 - **Team names and photos** — `team.html`
 - **All Lab entries** — `lab.html`
 

@@ -1,12 +1,12 @@
 /* ============================================================
-   AI Club — hero scroll animation (home page only)
+   AI Lab — hero scroll animation (home page only)
 
    Three layers share one sticky, fully transparent stage:
      1. #frameCanvas — the pre-extracted video frames, drawn by scroll
                        position, feathered at the edges by CSS mask
      2. #netCanvas   — a live, mouse-reactive neural constellation that
                        cross-fades in as the video's zoom completes
-     3. text layers  — the opening slogan, then the typewriter lines
+     3. text layers  — the opening slogan, then the typewriter sentences
 
    Because the stage has no background of its own, the page background
    shows through everywhere — so the animation has no visible box or edge.
@@ -25,7 +25,7 @@
   var loader    = document.getElementById('loader');
   if (!section || !frameCv || !netCv) return;
 
-  var reduceMotion = (window.SAIS && window.SAIS.reduceMotion) || false;
+  var reduceMotion = (window.AILab && window.AILab.reduceMotion) || false;
 
   /* ---------- Scroll choreography (fractions of the hero section) ----------
      The frame sequence covers only the camera push-in, so the zoom gets the
@@ -280,40 +280,70 @@
 
   /* ---------------------------------------------------------
      Typewriter sequence
+     One sentence at a time: type it, hold it, erase it, then type
+     the next — looping for as long as the network is on screen.
      --------------------------------------------------------- */
   var LINES = [
     'Learn how to use A.I. to innovate and create',
-    'Learn how to build A.I.',
+    'Learn how to build practical A.I. skills',
     'Learn to use A.I. responsibly'
   ];
+  var TYPE_SPEED  = 34;
+  var ERASE_SPEED = 16;
+  var HOLD_MS     = 1900;   // how long a finished sentence stays up
+  var GAP_MS      = 380;    // empty beat before the next sentence
+
   var typedStarted = false;
-  var typedTimers = [];
+  var typedTimer = null;        // only one step is ever pending at a time
+  var typedRun = 0;             // bumped on reset so stale steps bail out
   var cancelActiveType = null;
+
+  function later(fn, ms) { typedTimer = setTimeout(fn, ms); }
+
+  function erase(el, run, done) {
+    var caret = el.querySelector('.caret');
+    var text = el.textContent;
+    (function tick() {
+      if (run !== typedRun) return;
+      if (!text.length) { done(); return; }
+      text = text.slice(0, -1);
+      el.textContent = text;
+      if (caret) el.appendChild(caret);
+      later(tick, ERASE_SPEED);
+    })();
+  }
 
   function runTypewriter() {
     if (!typedWrap) return;
-    var els = typedWrap.querySelectorAll('.typed-line');
-    els.forEach(function (el) { el.textContent = ''; });
+    var el = typedWrap.querySelector('.typed-line');
+    if (!el) return;
+    var run = typedRun;
+    var idx = 0;
+    el.textContent = '';
     typedWrap.classList.add('on');
 
-    var idx = 0;
     function next() {
-      if (idx >= LINES.length || idx >= els.length) return;
-      var el = els[idx];
+      if (run !== typedRun) return;
       var text = LINES[idx];
-      idx++;
-      cancelActiveType = window.SAIS.typewrite(el, text, 34, function () {
+      idx = (idx + 1) % LINES.length;
+      cancelActiveType = window.AILab.typewrite(el, text, TYPE_SPEED, function () {
         cancelActiveType = null;
-        // Pause between lines so each one lands on its own
-        typedTimers.push(setTimeout(next, 520));
+        // Keep the caret blinking while the sentence holds
+        var caret = el.querySelector('.caret');
+        if (caret) caret.classList.remove('done');
+        later(function () {
+          if (reduceMotion) { el.textContent = ''; later(next, GAP_MS); return; }
+          erase(el, run, function () { later(next, GAP_MS); });
+        }, HOLD_MS);
       });
     }
     next();
   }
 
   function resetTypewriter() {
-    typedTimers.forEach(clearTimeout);
-    typedTimers = [];
+    typedRun++;
+    clearTimeout(typedTimer);
+    typedTimer = null;
     if (cancelActiveType) { cancelActiveType(); cancelActiveType = null; }
     typedStarted = false;
     if (typedWrap) {
