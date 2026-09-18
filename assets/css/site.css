@@ -595,10 +595,14 @@ h1, h2, h3, h4 {
   line-height: 1.62;
 }
 
-/* Linked card (AI Help Desk): a sweeping gradient border and a pill call
-   to action make it obvious the whole card opens the Ask AI Lab form */
-a.card { display: block; color: inherit; text-decoration: none; }
-.card-link { border-color: rgba(62, 231, 255, 0.3); }
+/* Linked card (AI Help Desk): a sweeping gradient border plus a call-to-action
+   row along the bottom make it obvious the whole card opens the Ask AI Lab form */
+a.card { color: inherit; text-decoration: none; }
+.card-link {
+  display: flex;
+  flex-direction: column;
+  border-color: rgba(62, 231, 255, 0.3);
+}
 .card-link::before {
   opacity: 1;
   background: linear-gradient(115deg, var(--cyan), transparent 28%, transparent 62%, var(--violet), transparent 84%, var(--cyan));
@@ -607,25 +611,38 @@ a.card { display: block; color: inherit; text-decoration: none; }
 }
 @keyframes card-sweep { from { background-position: 0% 50%; } to { background-position: 250% 50%; } }
 .card-cta {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 8px;
-  margin-top: 22px;
-  padding: 9px 17px;
-  border-radius: 99px;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;           /* sits on the card's bottom edge, in line with its neighbours */
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 14px;
-  color: #041018;
+  font-size: 14.6px;
+  color: var(--cyan);
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+.card-link p { margin-bottom: 22px; }
+.card-cta .arrow {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(62, 231, 255, 0.4);
+  transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.3, 1), background 0.35s, color 0.35s, box-shadow 0.35s;
+}
+.card-link:hover .card-cta { color: #ffffff; border-color: rgba(62, 231, 255, 0.35); }
+.card-link:hover .card-cta .arrow {
+  transform: translateX(4px);
   background: linear-gradient(100deg, var(--cyan), var(--violet));
-  animation: cta-pulse 2.6s ease-in-out infinite;
+  border-color: transparent;
+  color: #041018;
+  box-shadow: 0 0 22px rgba(62, 231, 255, 0.45);
 }
-@keyframes cta-pulse {
-  0%, 100% { box-shadow: 0 0 16px rgba(62, 231, 255, 0.25); }
-  50%      { box-shadow: 0 0 34px rgba(62, 231, 255, 0.55); }
-}
-.card-cta .arrow { display: inline-block; transition: transform 0.3s ease; }
-.card-link:hover .card-cta .arrow { transform: translateX(6px); }
 .card-link:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
 
 /* ---------- Mission stats ---------- */
@@ -1033,7 +1050,7 @@ a.card { display: block; color: inherit; text-decoration: none; }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
   .caret { animation: none; }
-  .card-link::before, .card-cta { animation: none; }
+  .card-link::before { animation: none; }
   .scroll-hint .mouse::after { animation: none; }
   * { scroll-behavior: auto !important; }
 }
