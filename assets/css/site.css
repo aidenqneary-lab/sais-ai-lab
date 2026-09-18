@@ -595,6 +595,39 @@ h1, h2, h3, h4 {
   line-height: 1.62;
 }
 
+/* Linked card (AI Help Desk): a sweeping gradient border and a pill call
+   to action make it obvious the whole card opens the Ask AI Lab form */
+a.card { display: block; color: inherit; text-decoration: none; }
+.card-link { border-color: rgba(62, 231, 255, 0.3); }
+.card-link::before {
+  opacity: 1;
+  background: linear-gradient(115deg, var(--cyan), transparent 28%, transparent 62%, var(--violet), transparent 84%, var(--cyan));
+  background-size: 250% 250%;
+  animation: card-sweep 4.5s linear infinite;
+}
+@keyframes card-sweep { from { background-position: 0% 50%; } to { background-position: 250% 50%; } }
+.card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 22px;
+  padding: 9px 17px;
+  border-radius: 99px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 14px;
+  color: #041018;
+  background: linear-gradient(100deg, var(--cyan), var(--violet));
+  animation: cta-pulse 2.6s ease-in-out infinite;
+}
+@keyframes cta-pulse {
+  0%, 100% { box-shadow: 0 0 16px rgba(62, 231, 255, 0.25); }
+  50%      { box-shadow: 0 0 34px rgba(62, 231, 255, 0.55); }
+}
+.card-cta .arrow { display: inline-block; transition: transform 0.3s ease; }
+.card-link:hover .card-cta .arrow { transform: translateX(6px); }
+.card-link:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
+
 /* ---------- Mission stats ---------- */
 .stat-row {
   display: grid;
@@ -921,6 +954,17 @@ h1, h2, h3, h4 {
   transition: color 0.22s;
 }
 .footer-col a:hover { color: var(--cyan); }
+.footer-col a.footer-ask {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 7px 15px;
+  border-radius: 99px;
+  border: 1px solid var(--border-hi);
+  color: var(--cyan);
+  font-weight: 600;
+  transition: background 0.22s, box-shadow 0.22s;
+}
+.footer-col a.footer-ask:hover { background: rgba(62, 231, 255, 0.08); box-shadow: 0 0 22px rgba(62, 231, 255, 0.3); }
 .footer-bottom {
   margin-top: 46px;
   padding-top: 24px;
@@ -989,6 +1033,7 @@ h1, h2, h3, h4 {
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
   .caret { animation: none; }
+  .card-link::before, .card-cta { animation: none; }
   .scroll-hint .mouse::after { animation: none; }
   * { scroll-behavior: auto !important; }
 }

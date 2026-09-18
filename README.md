@@ -27,7 +27,7 @@ solve everyday challenges, while building members' digital leadership skills alo
 | `index.html` | Scroll-driven hero animation (ends by typing out the mission), What We Do, Responsible AI Pledge |
 | `lab.html` | The living record — upcoming sessions, projects, events, opportunities, past work |
 | `team.html` | Executive team grid |
-| `register.html` | Registration form with validation and on-page confirmation |
+| `register.html` | Redirects to the Google Forms registration form (every Register link goes there directly) |
 
 Navigation on every page: **Home · What We Do · Lab · Responsible AI · Team · Register**
 
